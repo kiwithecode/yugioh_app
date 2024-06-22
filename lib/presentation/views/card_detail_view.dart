@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/yugioh_card.dart';
+import '../organisms/card_detail.dart';
 import '../molecules/detail_card_item.dart';
 
 class CardDetailView extends StatelessWidget {
@@ -22,7 +23,7 @@ class CardDetailView extends StatelessWidget {
                     clipper: InvertedWaveClipper(),
                     child: Container(
                       height: 500,
-                      color: const Color.fromRGBO(54, 13, 5, 1.0), // Color vino
+                      color: const Color.fromRGBO(54, 13, 5, 1.0),
                     ),
                   ),
                   Positioned(
@@ -73,85 +74,9 @@ class CardDetailView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Container(
-                  color: const Color.fromRGBO(
-                      233, 222, 199, 1.0), // Color de fondo del texto
+                  color: const Color.fromRGBO(233, 222, 199, 1.0),
                   padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'Type: ',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: card.type,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 4.0),
-                      Center(
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'Race: ',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: card.race,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      if (card.archetype != null)
-                        Center(
-                          child: RichText(
-                            text: TextSpan(
-                              text: 'Archetype: ',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight:
-                                    FontWeight.bold, // Negrilla para el título
-                                color: Colors.black,
-                              ),
-                              children: [
-                                TextSpan(
-                                  text: '${card.archetype}',
-                                  style: const TextStyle(
-                                    fontWeight:
-                                        FontWeight.normal, // Texto normal
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      const SizedBox(height: 16.0),
-                      Text(
-                        card.desc.replaceAll('•', '\n•'),
-                        style: const TextStyle(fontSize: 16),
-                        textAlign: TextAlign.justify, // Justificar el contenido
-                      ),
-                      const SizedBox(height: 16.0),
-                    ],
-                  ),
+                  child: CardDetail(card: card),
                 ),
               ),
             ],
@@ -168,17 +93,13 @@ class InvertedWaveClipper extends CustomClipper<Path> {
     var path = Path();
     path.lineTo(0, size.height);
 
-    var firstControlPoint =
-        Offset(size.width / 4, size.height - 150); // Ajusta este valor
-    var firstEndPoint =
-        Offset(size.width / 2, size.height - 170); // Ajusta este valor
+    var firstControlPoint = Offset(size.width / 4, size.height - 150);
+    var firstEndPoint = Offset(size.width / 2, size.height - 170);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
-    var secondControlPoint =
-        Offset(size.width * 3 / 4, size.height - 190); // Ajusta este valor
-    var secondEndPoint =
-        Offset(size.width, size.height - 160); // Ajusta este valor
+    var secondControlPoint = Offset(size.width * 3 / 4, size.height - 190);
+    var secondEndPoint = Offset(size.width, size.height - 160);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
 

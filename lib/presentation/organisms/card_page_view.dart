@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/yugioh_card_provider.dart';
-import '../molecules/card_item.dart';
+import '../molecules/card_display.dart';
 import '../views/card_detail_view.dart';
 
 class CardPageView extends StatelessWidget {
@@ -68,7 +68,7 @@ class CardPageView extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: CardItem(
+                      child: CardDisplay(
                         imageUrl: card.imageUrl,
                         onDelete: () => yugiohCardProvider.removeCard(index),
                       ),
