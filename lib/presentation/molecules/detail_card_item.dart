@@ -22,7 +22,7 @@ class DetailCardItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             boxShadow: [
               BoxShadow(
-                color: Colors.black26,
+                color: Colors.white38,
                 blurRadius: 20,
                 spreadRadius: 5,
                 offset: Offset(0, 10),

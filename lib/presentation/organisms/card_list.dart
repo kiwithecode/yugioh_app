@@ -19,7 +19,7 @@ class CardList extends StatelessWidget {
             width: 140,
             margin: EdgeInsets.symmetric(horizontal: 8.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: const Color.fromARGB(255, 12, 11, 11),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,

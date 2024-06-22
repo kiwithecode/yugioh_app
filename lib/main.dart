@@ -30,10 +30,14 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Yu-Gi-Oh Cards',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: Color.fromRGBO(233, 222, 199, 1.0),
+          scaffoldBackgroundColor: Color.fromRGBO(233, 222, 199, 1.0),
+          appBarTheme: AppBarTheme(
+            color: Color.fromRGBO(233, 222, 199, 1.0),
+          ),
         ),
         home: CardListView(),
-        debugShowCheckedModeBanner: false, // Añadir esta línea
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

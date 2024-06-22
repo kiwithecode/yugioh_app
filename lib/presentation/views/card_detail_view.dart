@@ -11,6 +11,7 @@ class CardDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        top: false,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,7 +22,7 @@ class CardDetailView extends StatelessWidget {
                     clipper: InvertedWaveClipper(),
                     child: Container(
                       height: 500,
-                      color: Colors.blueAccent,
+                      color: Color.fromRGBO(54, 13, 5, 1.0), // Color vino
                     ),
                   ),
                   Positioned(
@@ -32,7 +33,8 @@ class CardDetailView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          icon: Icon(Icons.arrow_back, color: Colors.white),
+                          icon: Icon(Icons.arrow_back,
+                              color: const Color.fromRGBO(233, 222, 199, 1.0)),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -42,7 +44,7 @@ class CardDetailView extends StatelessWidget {
                             child: Text(
                               card.name,
                               style: TextStyle(
-                                color: Colors.white,
+                                color: const Color.fromRGBO(233, 222, 199, 1.0),
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -66,8 +68,10 @@ class CardDetailView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 16.0),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
+              Container(
+                color: Color.fromRGBO(
+                    233, 222, 199, 1.0), // Color de fondo del texto
+                padding: const EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -115,16 +119,16 @@ class InvertedWaveClipper extends CustomClipper<Path> {
     path.lineTo(0, size.height);
 
     var firstControlPoint =
-        Offset(size.width / 4, size.height - 150); // Cambia este valor
+        Offset(size.width / 4, size.height - 100); // Ajusta este valor
     var firstEndPoint =
-        Offset(size.width / 2, size.height - 170); // Cambia este valor
+        Offset(size.width / 2, size.height - 120); // Ajusta este valor
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
     var secondControlPoint =
-        Offset(size.width * 3 / 4, size.height - 190); // Cambia este valor
+        Offset(size.width * 3 / 4, size.height - 140); // Ajusta este valor
     var secondEndPoint =
-        Offset(size.width, size.height - 160); // Cambia este valor
+        Offset(size.width, size.height - 110); // Ajusta este valor
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
 
