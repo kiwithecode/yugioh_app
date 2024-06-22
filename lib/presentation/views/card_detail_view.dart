@@ -33,8 +33,10 @@ class CardDetailView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          icon: Icon(Icons.arrow_back,
-                              color: const Color.fromRGBO(233, 222, 199, 1.0)),
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Color.fromRGBO(233, 222, 199, 1.0),
+                          ),
                           onPressed: () {
                             Navigator.pop(context);
                           },
@@ -44,7 +46,7 @@ class CardDetailView extends StatelessWidget {
                             child: Text(
                               card.name,
                               style: TextStyle(
-                                color: const Color.fromRGBO(233, 222, 199, 1.0),
+                                color: Color.fromRGBO(233, 222, 199, 1.0),
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -68,40 +70,90 @@ class CardDetailView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 16.0),
-              Container(
-                color: Color.fromRGBO(
-                    233, 222, 199, 1.0), // Color de fondo del texto
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Text(
-                        'Type: ${card.type}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                    SizedBox(height: 4.0),
-                    Center(
-                      child: Text(
-                        'Race: ${card.race}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ),
-                    if (card.archetype != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Container(
+                  color: Color.fromRGBO(
+                      233, 222, 199, 1.0), // Color de fondo del texto
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Center(
-                        child: Text(
-                          'Archetype: ${card.archetype}',
-                          style: TextStyle(fontSize: 16),
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Type: ',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight:
+                                  FontWeight.bold, // Negrilla para el título
+                              color: Colors.black,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: '${card.type}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal, // Texto normal
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    SizedBox(height: 16.0),
-                    Text(
-                      card.desc,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    SizedBox(height: 16.0),
-                  ],
+                      const SizedBox(height: 4.0),
+                      Center(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Race: ',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight:
+                                  FontWeight.bold, // Negrilla para el título
+                              color: Colors.black,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: '${card.race}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.normal, // Texto normal
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      if (card.archetype != null)
+                        Center(
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'Archetype: ',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight:
+                                    FontWeight.bold, // Negrilla para el título
+                                color: Colors.black,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: '${card.archetype}',
+                                  style: TextStyle(
+                                    fontWeight:
+                                        FontWeight.normal, // Texto normal
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      const SizedBox(height: 16.0),
+                      Text(
+                        card.desc.replaceAll('•', '\n•'),
+                        style: const TextStyle(fontSize: 16),
+                        textAlign: TextAlign.justify, // Justificar el contenido
+                      ),
+                      const SizedBox(height: 16.0),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -119,16 +171,16 @@ class InvertedWaveClipper extends CustomClipper<Path> {
     path.lineTo(0, size.height);
 
     var firstControlPoint =
-        Offset(size.width / 4, size.height - 100); // Ajusta este valor
+        Offset(size.width / 4, size.height - 150); // Ajusta este valor
     var firstEndPoint =
-        Offset(size.width / 2, size.height - 120); // Ajusta este valor
+        Offset(size.width / 2, size.height - 170); // Ajusta este valor
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
 
     var secondControlPoint =
-        Offset(size.width * 3 / 4, size.height - 140); // Ajusta este valor
+        Offset(size.width * 3 / 4, size.height - 190); // Ajusta este valor
     var secondEndPoint =
-        Offset(size.width, size.height - 110); // Ajusta este valor
+        Offset(size.width, size.height - 160); // Ajusta este valor
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
 

@@ -50,9 +50,9 @@ class CardPageView extends StatelessWidget {
                 );
               },
               child: Container(
-                margin: EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
+                margin: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Color.fromRGBO(233, 222, 199, 1.0),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black26,

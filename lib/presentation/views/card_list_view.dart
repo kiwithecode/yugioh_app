@@ -31,6 +31,7 @@ class CardListView extends StatelessWidget {
                       children: [
                         IconButton(
                           icon: Icon(Icons.arrow_back_ios),
+                          color: const Color.fromRGBO(54, 13, 5, 1.0),
                           onPressed: () {
                             if (yugiohCardProvider.currentPage > 0) {
                               _pageController.previousPage(
@@ -43,10 +44,13 @@ class CardListView extends StatelessWidget {
                         Text(
                           '${yugiohCardProvider.currentPage + 1} / ${yugiohCardProvider.cards.length}',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromRGBO(54, 13, 5, 1.0)),
                         ),
                         IconButton(
                           icon: Icon(Icons.arrow_forward_ios),
+                          color: const Color.fromRGBO(54, 13, 5, 1.0),
                           onPressed: () {
                             if (yugiohCardProvider.currentPage <
                                 yugiohCardProvider.cards.length - 1) {
@@ -67,6 +71,10 @@ class CardListView extends StatelessWidget {
                           onPressed: () {
                             yugiohCardProvider.addRandomCard();
                           },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF360D05),
+                            foregroundColor: Color(0xFFEBE3D0),
+                          ),
                           child: Text('Add Random Card'),
                         ),
                         SizedBox(width: 16.0),
@@ -74,6 +82,10 @@ class CardListView extends StatelessWidget {
                           onPressed: () {
                             yugiohCardProvider.shuffleCards();
                           },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF360D05),
+                            foregroundColor: Color(0xFFEBE3D0),
+                          ),
                           child: Text('Shuffle Cards'),
                         ),
                       ],

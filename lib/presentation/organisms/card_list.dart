@@ -17,9 +17,9 @@ class CardList extends StatelessWidget {
           final card = yugiohCardProvider.selectedCards[index];
           return Container(
             width: 140,
-            margin: EdgeInsets.symmetric(horizontal: 8.0),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 12, 11, 11),
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 12, 11, 11),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
