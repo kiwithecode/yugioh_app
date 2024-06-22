@@ -7,9 +7,9 @@ class CardDetail extends StatelessWidget {
   final YugiohCard card;
 
   const CardDetail({
-    Key? key,
+    super.key,
     required this.card,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

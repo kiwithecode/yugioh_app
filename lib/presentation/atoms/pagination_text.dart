@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PaginationText extends StatelessWidget {
   final String text;
 
-  const PaginationText({Key? key, required this.text}) : super(key: key);
+  const PaginationText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

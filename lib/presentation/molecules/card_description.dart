@@ -5,9 +5,9 @@ class CardDescription extends StatelessWidget {
   final String description;
 
   const CardDescription({
-    Key? key,
+    super.key,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

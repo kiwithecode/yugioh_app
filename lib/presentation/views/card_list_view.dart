@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../shared/constants/constants.dart';
 import '../providers/yugioh_card_provider.dart';
 import '../organisms/card_list.dart';
 import '../organisms/card_page_view.dart';
-import '../molecules/pagination_controls.dart';
+import '../atoms/elevated_action_button.dart';
+import '../atoms/icon_button.dart';
+import '../atoms/app_bar.dart';
 
 class CardListView extends StatelessWidget {
   final PageController _pageController = PageController(viewportFraction: 0.8);
@@ -15,9 +18,7 @@ class CardListView extends StatelessWidget {
     final yugiohCardProvider = Provider.of<YugiohCardProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Yu-Gi-Oh Cards'),
-      ),
+      appBar: const CustomAppBar(title: 'Yu-Gi-Oh Cards'),
       body: yugiohCardProvider.isLoading
           ? const Center(child: CircularProgressIndicator())
           : yugiohCardProvider.cards.isEmpty
@@ -29,51 +30,57 @@ class CardListView extends StatelessWidget {
                     const SizedBox(height: 16.0),
                     CardPageView(pageController: _pageController),
                     const SizedBox(height: 4.0),
-                    PaginationControls(
-                      currentPage: yugiohCardProvider.currentPage + 1,
-                      totalPages: yugiohCardProvider.cards.length,
-                      onPrevious: () {
-                        if (yugiohCardProvider.currentPage > 0) {
-                          _pageController.previousPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                        }
-                      },
-                      onNext: () {
-                        if (yugiohCardProvider.currentPage <
-                            yugiohCardProvider.cards.length - 1) {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                          );
-                        }
-                      },
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomIconButton(
+                          icon: Icons.arrow_back_ios,
+                          onPressed: () {
+                            if (yugiohCardProvider.currentPage > 0) {
+                              _pageController.previousPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          },
+                        ),
+                        Text(
+                          '${yugiohCardProvider.currentPage + 1} / ${yugiohCardProvider.cards.length}',
+                          style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: secondaryColor),
+                        ),
+                        CustomIconButton(
+                          icon: Icons.arrow_forward_ios,
+                          onPressed: () {
+                            if (yugiohCardProvider.currentPage <
+                                yugiohCardProvider.cards.length - 1) {
+                              _pageController.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          },
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 8.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton(
+                        ElevatedActionButton(
+                          text: 'Add Random Card',
                           onPressed: () {
                             yugiohCardProvider.addRandomCard(context);
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF360D05),
-                            foregroundColor: const Color(0xFFEBE3D0),
-                          ),
-                          child: const Text('Add Random Card'),
                         ),
                         const SizedBox(width: 16.0),
-                        ElevatedButton(
+                        ElevatedActionButton(
+                          text: 'Shuffle Cards',
                           onPressed: () {
                             yugiohCardProvider.shuffleCards();
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF360D05),
-                            foregroundColor: const Color(0xFFEBE3D0),
-                          ),
-                          child: const Text('Shuffle Cards'),
                         ),
                       ],
                     ),
