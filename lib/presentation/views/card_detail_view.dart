@@ -15,23 +15,18 @@ class CardDetailView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(card.imageUrl),
             SizedBox(height: 16.0),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(card.desc),
-                    SizedBox(height: 8.0),
-                    Text('Type: ${card.type}'),
-                    Text('Race: ${card.race}'),
-                    if (card.archetype != null)
-                      Text('Archetype: ${card.archetype}'),
-                  ],
-                ),
-              ),
+            Text(
+              card.desc,
+              style: TextStyle(fontSize: 16),
             ),
+            SizedBox(height: 8.0),
+            Text('Type: ${card.type}'),
+            Text('Race: ${card.race}'),
+            if (card.archetype != null) Text('Archetype: ${card.archetype}'),
           ],
         ),
       ),
