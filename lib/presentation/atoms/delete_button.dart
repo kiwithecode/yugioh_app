@@ -8,10 +8,23 @@ class DeleteButtonAtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      right: 0,
-      child: IconButton(
-        icon: const Icon(Icons.delete, color: Colors.red),
-        onPressed: onPressed,
+      right: 10,
+      top: 3,
+      child: Tooltip(
+        message: 'This will delete the item from the list',
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+        ),
+        padding: EdgeInsets.all(10), // Increase the padding
+        child: IconButton(
+          icon: const Icon(Icons.delete_forever, color: Colors.red),
+          onPressed: onPressed,
+        ),
       ),
     );
   }
