@@ -20,7 +20,7 @@ class DeleteButtonAtom extends StatelessWidget {
           color: Colors.white,
           fontSize: 14,
         ),
-        padding: EdgeInsets.all(10), // Increase the padding
+        padding: const EdgeInsets.all(10),
         child: IconButton(
           icon: const Icon(Icons.delete_forever, color: Colors.red),
           onPressed: onPressed,
