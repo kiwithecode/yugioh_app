@@ -30,10 +30,12 @@ class YugiohCardProvider with ChangeNotifier {
     }
   }
 
-  void addCardToSelected(int index) {
+  void addCardToSelected(int index, BuildContext context) {
     if (_selectedCards.length < 5) {
       _selectedCards.add(_cards[index]);
       notifyListeners();
+    } else {
+      _showMaxSelectionAlert(context);
     }
   }
 
@@ -47,10 +49,14 @@ class YugiohCardProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addRandomCard() {
-    if (_cards.isNotEmpty) {
-      _selectedCards.add(_cards[_randomIndex()]);
-      notifyListeners();
+  void addRandomCard(BuildContext context) {
+    if (_selectedCards.length < 5) {
+      if (_cards.isNotEmpty) {
+        _selectedCards.add(_cards[_randomIndex()]);
+        notifyListeners();
+      }
+    } else {
+      _showMaxSelectionAlert(context);
     }
   }
 
@@ -70,5 +76,21 @@ class YugiohCardProvider with ChangeNotifier {
                 (DateTime.now().millisecondsSinceEpoch % 1000) /
                 1000)
         .round();
+  }
+
+  void _showMaxSelectionAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Maximum Selection Reached'),
+        content: const Text('You can only select up to 5 cards.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 }

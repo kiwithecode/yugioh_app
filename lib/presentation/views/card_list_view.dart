@@ -71,7 +71,7 @@ class CardListView extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            yugiohCardProvider.addRandomCard();
+                            yugiohCardProvider.addRandomCard(context);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF360D05),

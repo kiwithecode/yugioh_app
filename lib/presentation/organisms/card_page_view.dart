@@ -41,7 +41,7 @@ class CardPageView extends StatelessWidget {
             child: GestureDetector(
               onVerticalDragEnd: (details) {
                 if (details.primaryVelocity! < 0) {
-                  yugiohCardProvider.addCardToSelected(index);
+                  yugiohCardProvider.addCardToSelected(index, context);
                 }
               },
               onTap: () {
