@@ -5,7 +5,8 @@ class DetailCardItem extends StatelessWidget {
   final double width;
   final double height;
 
-  DetailCardItem({
+  const DetailCardItem({
+    super.key,
     required this.imageUrl,
     this.width = 200,
     this.height = 300,

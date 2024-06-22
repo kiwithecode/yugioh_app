@@ -5,7 +5,7 @@ import '../molecules/detail_card_item.dart';
 class CardDetailView extends StatelessWidget {
   final YugiohCard card;
 
-  CardDetailView({required this.card});
+  const CardDetailView({super.key, required this.card});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CardDetailView extends StatelessWidget {
                     clipper: InvertedWaveClipper(),
                     child: Container(
                       height: 500,
-                      color: Color.fromRGBO(54, 13, 5, 1.0), // Color vino
+                      color: const Color.fromRGBO(54, 13, 5, 1.0), // Color vino
                     ),
                   ),
                   Positioned(
@@ -33,7 +33,7 @@ class CardDetailView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.arrow_back,
                             color: Color.fromRGBO(233, 222, 199, 1.0),
                           ),
@@ -45,7 +45,7 @@ class CardDetailView extends StatelessWidget {
                           child: Center(
                             child: Text(
                               card.name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Color.fromRGBO(233, 222, 199, 1.0),
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class CardDetailView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 48),
+                        const SizedBox(width: 48),
                       ],
                     ),
                   ),
@@ -69,11 +69,11 @@ class CardDetailView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Container(
-                  color: Color.fromRGBO(
+                  color: const Color.fromRGBO(
                       233, 222, 199, 1.0), // Color de fondo del texto
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -83,17 +83,16 @@ class CardDetailView extends StatelessWidget {
                         child: RichText(
                           text: TextSpan(
                             text: 'Type: ',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
-                              fontWeight:
-                                  FontWeight.bold, // Negrilla para el título
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                             children: [
                               TextSpan(
-                                text: '${card.type}',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.normal, // Texto normal
+                                text: card.type,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.normal,
                                 ),
                               ),
                             ],
@@ -105,17 +104,16 @@ class CardDetailView extends StatelessWidget {
                         child: RichText(
                           text: TextSpan(
                             text: 'Race: ',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
-                              fontWeight:
-                                  FontWeight.bold, // Negrilla para el título
+                              fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                             children: [
                               TextSpan(
-                                text: '${card.race}',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.normal, // Texto normal
+                                text: card.race,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.normal,
                                 ),
                               ),
                             ],
@@ -127,7 +125,7 @@ class CardDetailView extends StatelessWidget {
                           child: RichText(
                             text: TextSpan(
                               text: 'Archetype: ',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight:
                                     FontWeight.bold, // Negrilla para el título
@@ -136,7 +134,7 @@ class CardDetailView extends StatelessWidget {
                               children: [
                                 TextSpan(
                                   text: '${card.archetype}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight:
                                         FontWeight.normal, // Texto normal
                                   ),

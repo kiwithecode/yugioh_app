@@ -4,6 +4,8 @@ import '../providers/yugioh_card_provider.dart';
 import '../molecules/selected_card_item.dart';
 
 class CardList extends StatelessWidget {
+  const CardList({super.key});
+
   @override
   Widget build(BuildContext context) {
     final yugiohCardProvider = Provider.of<YugiohCardProvider>(context);

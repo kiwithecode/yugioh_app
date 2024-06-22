@@ -6,15 +6,20 @@ class CardWidget extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onDelete;
 
-  CardWidget({required this.card, required this.onTap, required this.onDelete});
+  const CardWidget({
+    super.key,
+    required this.card,
+    required this.onTap,
+    required this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.all(8.0),
+        decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -38,7 +43,7 @@ class CardWidget extends StatelessWidget {
                         Positioned(
                           right: 0,
                           child: IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: onDelete,
                           ),
                         ),
@@ -46,7 +51,7 @@ class CardWidget extends StatelessWidget {
                     )
                   : Container(color: Colors.grey),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(card.name),
           ],
         ),

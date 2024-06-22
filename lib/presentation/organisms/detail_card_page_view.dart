@@ -8,7 +8,11 @@ class DetailCardPageView extends StatelessWidget {
   final PageController pageController;
   final List<YugiohCard> cards;
 
-  DetailCardPageView({required this.pageController, required this.cards});
+  const DetailCardPageView({
+    super.key,
+    required this.pageController,
+    required this.cards,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +47,9 @@ class DetailCardPageView extends StatelessWidget {
               );
             },
             child: Container(
-              margin: EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: const Color.fromRGBO(233, 222, 199, 1.0),
+              margin: const EdgeInsets.all(8.0),
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(233, 222, 199, 1.0),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black26,
@@ -70,7 +74,8 @@ class DetailCardPageView extends StatelessWidget {
                               Positioned(
                                 right: 0,
                                 child: IconButton(
-                                  icon: Icon(Icons.delete, color: Colors.red),
+                                  icon: const Icon(Icons.delete,
+                                      color: Colors.red),
                                   onPressed: () {
                                     // Eliminar la carta
                                   },
@@ -80,7 +85,7 @@ class DetailCardPageView extends StatelessWidget {
                           )
                         : Container(color: Colors.grey),
                   ),
-                  SizedBox(height: 8.0),
+                  const SizedBox(height: 8.0),
                 ],
               ),
             ),

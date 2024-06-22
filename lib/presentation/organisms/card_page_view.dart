@@ -7,7 +7,10 @@ import '../views/card_detail_view.dart';
 class CardPageView extends StatelessWidget {
   final PageController pageController;
 
-  CardPageView({required this.pageController});
+  const CardPageView({
+    required this.pageController,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class CardPageView extends StatelessWidget {
                         onDelete: () => yugiohCardProvider.removeCard(index),
                       ),
                     ),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
                   ],
                 ),
               ),

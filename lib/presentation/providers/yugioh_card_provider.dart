@@ -5,7 +5,7 @@ import '../../domain/usecases/get_yugioh_cards.dart';
 class YugiohCardProvider with ChangeNotifier {
   final GetYugiohCards getYugiohCards;
   List<YugiohCard> _cards = [];
-  List<YugiohCard> _selectedCards = [];
+  final List<YugiohCard> _selectedCards = [];
   bool _isLoading = false;
   int _currentPage = 0;
 
@@ -67,7 +67,7 @@ class YugiohCardProvider with ChangeNotifier {
   int _randomIndex() {
     return (0 +
             (_cards.length - 1) *
-                (new DateTime.now().millisecondsSinceEpoch % 1000) /
+                (DateTime.now().millisecondsSinceEpoch % 1000) /
                 1000)
         .round();
   }

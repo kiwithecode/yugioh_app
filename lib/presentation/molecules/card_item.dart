@@ -6,7 +6,11 @@ class CardItem extends StatelessWidget {
   final String imageUrl;
   final VoidCallback onDelete;
 
-  CardItem({required this.imageUrl, required this.onDelete});
+  const CardItem({
+    super.key,
+    required this.imageUrl,
+    required this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {

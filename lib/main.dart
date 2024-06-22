@@ -17,7 +17,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final GetYugiohCards getYugiohCards;
 
-  MyApp({required this.getYugiohCards});
+  const MyApp({required this.getYugiohCards, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Yu-Gi-Oh Cards',
         theme: ThemeData(
-          primaryColor: Color.fromRGBO(233, 222, 199, 1.0),
-          scaffoldBackgroundColor: Color.fromRGBO(233, 222, 199, 1.0),
-          appBarTheme: AppBarTheme(
+          primaryColor: const Color.fromRGBO(233, 222, 199, 1.0),
+          scaffoldBackgroundColor: const Color.fromRGBO(233, 222, 199, 1.0),
+          appBarTheme: const AppBarTheme(
             color: Color.fromRGBO(233, 222, 199, 1.0),
           ),
         ),
