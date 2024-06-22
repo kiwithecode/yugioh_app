@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: CardListView(),
+        debugShowCheckedModeBanner: false, // Añadir esta línea
       ),
     );
   }
