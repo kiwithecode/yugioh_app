@@ -35,7 +35,7 @@ class YugiohCardProvider with ChangeNotifier {
       _selectedCards.add(_cards[index]);
       notifyListeners();
     } else {
-      _showMaxSelectionAlert(context);
+      showMaxSelectionAlert(context);
     }
   }
 
@@ -56,7 +56,7 @@ class YugiohCardProvider with ChangeNotifier {
         notifyListeners();
       }
     } else {
-      _showMaxSelectionAlert(context);
+      showMaxSelectionAlert(context);
     }
   }
 
@@ -78,7 +78,7 @@ class YugiohCardProvider with ChangeNotifier {
         .round();
   }
 
-  void _showMaxSelectionAlert(BuildContext context) {
+  void showMaxSelectionAlert(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

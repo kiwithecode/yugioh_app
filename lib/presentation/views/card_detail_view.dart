@@ -20,6 +20,7 @@ class CardDetailView extends StatelessWidget {
             archetype: card.archetype ?? '',
             description: card.desc,
             imageUrl: card.imageUrl,
+            card: card,
           ),
         ),
       ),
