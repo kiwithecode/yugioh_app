@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
-import '../atoms/card_image.dart';
-import '../atoms/delete_button.dart';
 
 class CardItem extends StatelessWidget {
   final String imageUrl;
   final VoidCallback onDelete;
 
   const CardItem({
-    super.key,
     required this.imageUrl,
     required this.onDelete,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CardImage(imageUrl: imageUrl),
-        DeleteButtonAtom(onPressed: onDelete),
+        Image.network(imageUrl),
+        Positioned(
+          right: -16,
+          top: -15,
+          child: Tooltip(
+            message: 'Remove from list',
+            child: IconButton(
+              icon: const Icon(Icons.delete, color: Colors.red),
+              onPressed: onDelete,
+            ),
+          ),
+        ),
       ],
     );
   }

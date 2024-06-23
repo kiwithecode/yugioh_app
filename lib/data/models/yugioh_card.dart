@@ -1,4 +1,5 @@
 class YugiohCard {
+  final int id;
   final String name;
   final String imageUrl;
   final String desc;
@@ -7,6 +8,7 @@ class YugiohCard {
   final String? archetype;
 
   YugiohCard({
+    required this.id,
     required this.name,
     required this.imageUrl,
     required this.desc,
@@ -17,6 +19,7 @@ class YugiohCard {
 
   factory YugiohCard.fromJson(Map<String, dynamic> json) {
     return YugiohCard(
+      id: json['id'],
       name: json['name'],
       imageUrl: json['card_images'][0]['image_url'],
       desc: json['desc'],

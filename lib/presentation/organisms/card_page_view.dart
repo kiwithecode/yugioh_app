@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/yugioh_card_provider.dart';
-import '../molecules/card_display.dart';
+import '../molecules/card_item.dart';
 import '../views/card_detail_view.dart';
 
 class CardPageView extends StatelessWidget {
@@ -31,17 +31,24 @@ class CardPageView extends StatelessWidget {
                 value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
               }
               return Center(
-                child: SizedBox(
-                  height: Curves.easeInOut.transform(value) * 400,
-                  width: Curves.easeInOut.transform(value) * 280,
-                  child: child,
+                child: Opacity(
+                  opacity: value,
+                  child: SizedBox(
+                    height: Curves.easeInOut.transform(value) * 400,
+                    width: Curves.easeInOut.transform(value) * 280,
+                    child: child,
+                  ),
                 ),
               );
             },
             child: GestureDetector(
               onVerticalDragEnd: (details) {
                 if (details.primaryVelocity! < 0) {
+                  // Swipe hacia arriba
                   yugiohCardProvider.addCardToSelected(index, context);
+                } else if (details.primaryVelocity! > 0) {
+                  // Swipe hacia abajo
+                  yugiohCardProvider.removeCard(index);
                 }
               },
               onTap: () {
@@ -68,7 +75,7 @@ class CardPageView extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: CardDisplay(
+                      child: CardItem(
                         imageUrl: card.imageUrl,
                         onDelete: () => yugiohCardProvider.removeCard(index),
                       ),
